@@ -35,6 +35,33 @@ The options at the bottom control the output: *Remove duplicate QSOs
 (call, band, time)* (on by default) and *Sort QSOs by date/time* (on by
 default).
 
+## C++ version (Qt6)
+
+The same tool - parsing and merging logic in C++, GUI in Qt6 - is available
+as a desktop application in `src/` with its own `CMakeLists.txt` and unit
+tests in `tests/`:
+
+```sh
+# Install Qt6 development files first (Qt6::Widgets):
+#   Raspberry Pi / Debian/Ubuntu: sudo apt install qt6-base-dev
+#   macOS:                       brew install qt6
+#   Windows:                     the Qt Installer
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+./build/wsjtx_log_univer
+```
+
+Run the C++ unit tests:
+
+```sh
+ctest --test-dir build
+```
+
+The C++ GUI mirrors the Python version: **Add files…** / **Add directory…**
+add logs, double-click a row to toggle whether it is taken into the unified
+log, **Read logs** counts the QSOs per file, and **Save unified log…**
+writes the unified ADIF log.
+
 ## Command line
 
 ```
